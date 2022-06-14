@@ -2,13 +2,13 @@ package com.gmail.inayakitorikhurram.boids.simulation.math;
 
 public class Position {
 
-    private int[] p;
-    private final int[] bounds;
+    private float[] p;
+    private final float[] bounds;
     private int dims;
 
-    public Position(int[] p, int[] bounds){
+    public Position(float[] p, float[] bounds){
         if(p.length != bounds.length) {
-            throw new IllegalArgumentException("number of position elements must match number of bound elements");
+            throw new IllegalArgumentException("number of position elements must match number of boundary elements");
         }
 
         this.dims = p.length;
@@ -21,15 +21,15 @@ public class Position {
         this(p.p, p.bounds);
     }
 
-    public int[] add(int[] dp){
+    public float[] add(float[] dp){
         for(int i = 0; i < dims; i++){
             add(i, dp[i]);
         }
         return p;
     }
-    public int[] add(int i, int dx){
+    public float[] add(int i, float dx){
         p[i] += dx;
-        int b = bounds[i];
+        float b = bounds[i];
         //not using mod cause need to detect changes so that klein bottle effects can be added later
         if(p[i] > b){
             p[i] -= b;
@@ -39,20 +39,20 @@ public class Position {
         return p;
     }
 
-    public int[] get(){
+    public float[] get(){
         return p;
     }
 
-    public int get(int i){
+    public float get(int i){
         return p[i];
     }
 
-    public static Position randomPos(int[] bounds){
+    public static Position randomPos(float[] bounds){
         int dims = bounds.length;
-        Position p = new Position(new int[dims], bounds);
+        Position p = new Position(new float[dims], bounds);
 
         for(int i = 0; i < dims; i++){
-            p.p[i] = (int)(Math.random() * bounds[i]);
+            p.p[i] = (float)(Math.random() * bounds[i]);
         }
 
         return p;
