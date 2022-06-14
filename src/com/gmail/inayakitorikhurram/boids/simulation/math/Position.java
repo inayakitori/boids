@@ -47,15 +47,6 @@ public class Position {
         return p[i];
     }
 
-    public static Position randomPos(float[] bounds){
-        int dims = bounds.length;
-        Position p = new Position(new float[dims], bounds);
 
-        for(int i = 0; i < dims; i++){
-            p.p[i] = (float)(Math.random() * bounds[i]);
-        }
-
-        return p;
-    }
 
 }

@@ -6,53 +6,81 @@ import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
+import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class SimulationDisplay extends JFrame {
+public class SimulationDisplay extends Canvas {
 
-    private final int WIDTH;
-    private final int HEIGHT;
-
+    private JFrame frame;
+    private WindowSettings ws;
+    private BufferStrategy bs;
+    Graphics g = null;
     private ArrayList<Boid> boids;
-    public SimulationDisplay(int width, int height){
-        super("BOIDS BOIDS BOIDS");
-        WIDTH = width;
-        HEIGHT = height;
+    public SimulationDisplay(WindowSettings ws){
+        super();
+        this.ws = ws;
+        setSize(ws.width(), ws.height());
+
+        setIgnoreRepaint(true);
+        JFrame frame = new JFrame("BOIDS BOIDS BOIDS");
+        frame.setSize(ws.width(), ws.height());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setIgnoreRepaint(true);
+        frame.add(this);
+        frame.pack();
+        frame.setVisible(true);
+
+        //BufferStrategy
+
+        createBufferStrategy(3);
+        bs = getBufferStrategy();
 
         boids = new ArrayList<>();
 
-        setSize(WIDTH, HEIGHT);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                repaint();
-            }
-        }
-        , 0, BoidSettings.MILLISECONDS_PER_FRAME);
+                                      @Override
+                                      public void run() {
+                                          render(bs.getDrawGraphics());
+                                      }
+                                  }
+                , 0, ws.msPerFrame());
     }
 
     public void addBoid(Boid boid){
         boids.add(boid);
     }
 
-    public void paint(Graphics g){
-        super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setPaint(new Color(0xD5FFFF));
+    public void render(Graphics g){
+        try {
+            // clear back buffer...
+            g = bs.getDrawGraphics();
+            g.setColor( Color.BLACK );
+            g.fillRect( 0, 0, 639, 479 );
 
-        g2d.setBackground(new Color(0xD5BFEA));
-        g2d.clearRect(0, 0, WIDTH, HEIGHT);
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setBackground(ws.backgroundColor());
+        g2d.clearRect(0, 0, ws.width(), ws.height());
 
         for(Boid boid : boids){
             boid.draw(g2d);
+        }
+
+            // blit the back buffer to the screen
+            if( !bs.contentsLost() )
+                bs.show();
+
+            // Let the OS have a little time...
+            Thread.yield();
+        } finally {
+            if( g != null )
+                g.dispose();
         }
     }
 
