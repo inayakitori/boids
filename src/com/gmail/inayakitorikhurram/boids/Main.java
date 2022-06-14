@@ -3,6 +3,7 @@ package com.gmail.inayakitorikhurram.boids;
 
 import com.gmail.inayakitorikhurram.boids.simulation.Boid;
 import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
+import com.gmail.inayakitorikhurram.boids.simulation.math.Position;
 import com.gmail.inayakitorikhurram.boids.window.SimulationDisplay;
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
@@ -17,12 +18,16 @@ public class Main {
     public static void main(String[] args) {
 
 
-
         BoidSettings bs = new BoidSettings(
                 new float[]{1200, 800},
                 0.3f,
                 1.0f,
-                8
+                8,
+                10,
+                new float[]{0.0001f,
+                            1,
+                            1
+                }
         );
 
         WindowSettings ws = new WindowSettings(
@@ -48,7 +53,7 @@ public class Main {
             @Override
             public void run() {
                 for(Boid boid : boids){
-                    boid.update();
+                    boid.update(boids);
                 }
             }
         }

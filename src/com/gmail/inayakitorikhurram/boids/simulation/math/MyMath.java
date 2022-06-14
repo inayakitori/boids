@@ -1,5 +1,7 @@
 package com.gmail.inayakitorikhurram.boids.simulation.math;
 
+import java.util.ArrayList;
+
 public final class MyMath {
     public static float[] randomVector(float[] max){
         return randomVector(new float[max.length], max);
@@ -67,6 +69,20 @@ public final class MyMath {
 
     public static float getMag(float[] v){
         return (float) Math.sqrt(getMag2(v));
+    }
+
+    public static float[] average(ArrayList<float[]> others){
+        int n = others.size();
+        int dims = others.get(0).length;
+        float[] v = new float[dims];
+
+        for(float[] other : others){
+            for(int i = 0; i < dims; i++){
+                v[i] += other[i];
+            }
+        }
+
+        return mult(1.0f/n, v);
     }
 
 

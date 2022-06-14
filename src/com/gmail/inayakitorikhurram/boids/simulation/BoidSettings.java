@@ -5,6 +5,8 @@ public record BoidSettings(
     float[] bounds,
     float minMass,
     float maxMass,
-    int msPerTick
+    int msPerTick,
+    int boidCount,
+    float[] defaultWeights
 )
 {}

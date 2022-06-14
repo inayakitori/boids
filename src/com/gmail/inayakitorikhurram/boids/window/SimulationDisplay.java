@@ -69,7 +69,7 @@ public class SimulationDisplay extends Canvas {
         g2d.clearRect(0, 0, ws.width(), ws.height());
 
         for(Boid boid : boids){
-            boid.draw(g2d);
+            boid.draw(g2d, ws);
         }
 
             // blit the back buffer to the screen
