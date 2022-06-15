@@ -15,6 +15,8 @@ public class Boid {
 
     private Position pos;
     private float[] vel;
+    private float viewDistance = 100;
+    private float viewDistanceSquared = viewDistance * viewDistance;
     private float mass;
     private float[] weights; //0 = global, 1 = coherence, 2 = separation, 3 = alignment
     public Color color;
@@ -31,34 +33,45 @@ public class Boid {
     public Boid update(ArrayList<Boid> frens){
         //update velocity
         float[] acc = new float[bs.bounds().length];
+        ArrayList<Boid> close_frens = new ArrayList<>();
 
-        float[][] displacements = getDisplacements(frens);
-        float[] distancesSquared = new float[frens.size()];
 
         for(int i = 0; i < frens.size(); i++){
-            distancesSquared[i] = MyMath.getMag2(displacements[i]);
+            Boid fren = frens.get(i);
+            float[] displacement = Position.getDisplacement(pos, fren.pos);
+            float distanceSquared = MyMath.getMag2(displacement);
+            if(distanceSquared < viewDistanceSquared){
+                close_frens.add(fren);
+            }
         }
+
+        float[][] displacements = getDisplacements(close_frens);
+        float[] distancesSquared = new float[close_frens.size()];
 
         //coherence
         float[] coherence = MyMath.average(displacements);
         coherence = MyMath.mult(weights[1], coherence);
         acc = coherence;
 
-        //separation
+        //separation TODO fix
         float shortestDistanceSquared = Float.POSITIVE_INFINITY;
         int closestBoidIndex = -1;
-        for(int i = 0; i < frens.size(); i++){
+        for(int i = 0; i < close_frens.size(); i++){
             if(distancesSquared[i] < shortestDistanceSquared && distancesSquared[i] != 0){
                 shortestDistanceSquared = distancesSquared[i];
                 closestBoidIndex = i;
             }
         }
 
+        //alignment
+
+
+
         if(closestBoidIndex != -1) {
             float[] smallestDisplacement = frens.get(closestBoidIndex).pos.get();
 
             float[] separation = MyMath.mult(-1.0f * weights[2] / shortestDistanceSquared, smallestDisplacement);
-            acc = MyMath.sum(acc, separation);
+            //acc = MyMath.sum(acc, separation);
         }
         //alignment
 
@@ -67,7 +80,7 @@ public class Boid {
 
         vel = MyMath.sum(vel, acc );
 
-        vel = MyMath.mult(0.999f, vel);
+        //vel = MyMath.mult(0.999f, vel);
         //update position
         pos.add(vel);
         return this;

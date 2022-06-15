@@ -22,11 +22,11 @@ public class Main {
                 new float[]{1200, 800},
                 0.3f,
                 1.0f,
-                100,
+                8 ,
                 10,
                 new float[]{0.0001f,
-                            0.0f,
-                            100f,
+                            10.0f,
+                            10f,
                             1
                 }
         );
