@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="created records for global settings (maybe should use a static class instead? idk)&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="they move towards each other! also more math stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655200647749</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="they move towards each other! also more math stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <created>1655212824606</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655212824606</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +121,28 @@
     <MESSAGE value="init commit&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="started on project structure and boids &#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="created records for global settings (maybe should use a static class instead? idk)&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="created records for global settings (maybe should use a static class instead? idk)&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <MESSAGE value="they move towards each other! also more math stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="they move towards each other! also more math stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((Position)((Boid)this).pos).p" custom="com.gmail.inayakitorikhurram.boids.simulation.math.Position,com.gmail.inayakitorikhurram.boids.simulation.Boid" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -42,6 +42,7 @@ public class SimulationDisplay extends Canvas {
         boids = new ArrayList<>();
 
         Timer timer = new Timer();
+        int i = 0;
         timer.scheduleAtFixedRate(new TimerTask() {
                                       @Override
                                       public void run() {

@@ -22,10 +22,11 @@ public class Main {
                 new float[]{1200, 800},
                 0.3f,
                 1.0f,
-                8,
+                100,
                 10,
                 new float[]{0.0001f,
-                            1,
+                            0.0f,
+                            100f,
                             1
                 }
         );
@@ -52,8 +53,11 @@ public class Main {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                for(Boid boid : boids){
-                    boid.update(boids);
+                for(int i = 0; i < boids.size(); i++){
+                    if(i == 50){
+                        int x = 1;
+                    }
+                    boids.get(i).update(boids);
                 }
             }
         }

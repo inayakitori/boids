@@ -16,7 +16,7 @@ public class Boid {
     private Position pos;
     private float[] vel;
     private float mass;
-    private float[] weights; //0 = coherence, 1 = separation, 2 = alignment
+    private float[] weights; //0 = global, 1 = coherence, 2 = separation, 3 = alignment
     public Color color;
 
     public Boid(BoidSettings bs){
@@ -30,13 +30,57 @@ public class Boid {
 
     public Boid update(ArrayList<Boid> frens){
         //update velocity
-        float[] coherence = Position.getAverageDisplacement(pos, frens, true);
-        vel = MyMath.sum(vel, MyMath.mult(weights[0], coherence));
+        float[] acc = new float[bs.bounds().length];
+
+        float[][] displacements = getDisplacements(frens);
+        float[] distancesSquared = new float[frens.size()];
+
+        for(int i = 0; i < frens.size(); i++){
+            distancesSquared[i] = MyMath.getMag2(displacements[i]);
+        }
+
+        //coherence
+        float[] coherence = MyMath.average(displacements);
+        coherence = MyMath.mult(weights[1], coherence);
+        acc = coherence;
+
+        //separation
+        float shortestDistanceSquared = Float.POSITIVE_INFINITY;
+        int closestBoidIndex = -1;
+        for(int i = 0; i < frens.size(); i++){
+            if(distancesSquared[i] < shortestDistanceSquared && distancesSquared[i] != 0){
+                shortestDistanceSquared = distancesSquared[i];
+                closestBoidIndex = i;
+            }
+        }
+
+        if(closestBoidIndex != -1) {
+            float[] smallestDisplacement = frens.get(closestBoidIndex).pos.get();
+
+            float[] separation = MyMath.mult(-1.0f * weights[2] / shortestDistanceSquared, smallestDisplacement);
+            acc = MyMath.sum(acc, separation);
+        }
+        //alignment
+
+
+        acc = MyMath.mult(weights[0], acc);
+
+        vel = MyMath.sum(vel, acc );
 
         vel = MyMath.mult(0.999f, vel);
         //update position
         pos.add(vel);
         return this;
+    }
+
+    public float[][] getDisplacements(ArrayList<Boid> others){
+        float[][] displacements = new float[others.size()][bs.bounds().length];
+
+        for(int i = 0; i < others.size(); i++){
+            displacements[i] = Position.getDisplacement(pos, others.get(i).pos);
+        }
+
+        return displacements;
     }
 
     public void draw(Graphics2D g2d, WindowSettings ws){

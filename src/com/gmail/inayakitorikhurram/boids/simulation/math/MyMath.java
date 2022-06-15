@@ -29,7 +29,7 @@ public final class MyMath {
         return v;
     }
 
-    public static float[] clamp(float[] v, float maxMag){
+    public static float[] clamp(final float[] v,final float maxMag){
         if(maxMag == 0) return new float[v.length];
         float mag2 = getMag2(v);
 
@@ -40,14 +40,15 @@ public final class MyMath {
         return v;
     }
 
-    public static float[] mult(float s, float[] v){
+    public static float[] mult(final float s,final float[] v){
+        float[] vs = new float[v.length];
         for(int i = 0; i < v.length; i++){
-               v[i] *= s;
+               vs[i] = v[i] * s;
         }
-        return v;
+        return vs;
     }
 
-    public static float[] sum(float[] v1, float[] v2){
+    public static float[] sum(final float[] v1,final float[] v2){
         if(v1.length != v2.length){
             throw new IllegalArgumentException("v1.length != v2.length as " + v1.length + " != " + v2.length);
         }
@@ -58,7 +59,7 @@ public final class MyMath {
         return v3;
     }
 
-    public static float getMag2(float[] v){
+    public static float getMag2(final float[] v){
         float mag2 = 0;
 
         for(float f : v){
@@ -67,11 +68,11 @@ public final class MyMath {
         return mag2;
     }
 
-    public static float getMag(float[] v){
+    public static float getMag(final float[] v){
         return (float) Math.sqrt(getMag2(v));
     }
 
-    public static float[] average(ArrayList<float[]> others){
+    public static float[] average(final ArrayList<float[]> others){
         int n = others.size();
         int dims = others.get(0).length;
         float[] v = new float[dims];
@@ -84,6 +85,22 @@ public final class MyMath {
 
         return mult(1.0f/n, v);
     }
+
+    public static float[] average(final float[][] others){
+        int n = others.length;
+        int dims = others[0].length;
+        //others = float[n][dims]
+        float[] v = new float[dims];
+
+        for(int vectori = 0; vectori < n; vectori++){
+            for(int dimi = 0; dimi < dims; dimi++){
+                v[dimi] += others[vectori][dimi];
+            }
+        }
+
+        return mult(1.0f/n, v);
+    }
+
 
 
 }
