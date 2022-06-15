@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="separation&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655268804940</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <created>1655274272600</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655274272600</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,19 +137,20 @@
     <MESSAGE value="created records for global settings (maybe should use a static class instead? idk)&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="they move towards each other! also more math stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="separation&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="separation&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <MESSAGE value="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java</url>
-          <line>72</line>
+          <line>70</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

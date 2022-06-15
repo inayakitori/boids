@@ -22,12 +22,12 @@ public class Main {
                 new float[]{1200, 800},
                 0.3f,
                 1.0f,
-                8 ,
+                1 ,
                 10,
-                new float[]{0.0001f,
-                            10.0f,
-                            10f,
-                            1
+                new float[]{0.01f,
+                            1f,
+                            1f,
+                            0f
                 }
         );
 
@@ -54,9 +54,6 @@ public class Main {
             @Override
             public void run() {
                 for(int i = 0; i < boids.size(); i++){
-                    if(i == 50){
-                        int x = 1;
-                    }
                     boids.get(i).update(boids);
                 }
             }

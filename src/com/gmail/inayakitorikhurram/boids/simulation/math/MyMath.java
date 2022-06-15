@@ -3,11 +3,11 @@ package com.gmail.inayakitorikhurram.boids.simulation.math;
 import java.util.ArrayList;
 
 public final class MyMath {
-    public static float[] randomVector(float[] max){
+    public static float[] randomVector(final float[] max){
         return randomVector(new float[max.length], max);
     }
 
-    public static float[] randomVector(float[] min, float[] max) {
+    public static float[] randomVector(final float[] min, final float[] max) {
         if(min.length != max.length){
             throw new IllegalArgumentException("minimum bounds must match maximum bounds");
         }
@@ -20,7 +20,7 @@ public final class MyMath {
         return v;
     }
 
-    public static int[] randomVectori(int[] bounds){
+    public static int[] randomVectori(final int[] bounds){
         int[] v = new int[bounds.length];
         for(int i = 0; i < bounds.length; i++){
             v[i] = (int)(Math.random() * bounds[i]);
@@ -34,6 +34,17 @@ public final class MyMath {
         float mag2 = getMag2(v);
 
         if(mag2!=0 && mag2 > maxMag * maxMag){
+            return mult(maxMag / ((float) Math.sqrt(mag2)), v);
+        }
+
+        return v;
+    }
+
+    public static float[] setMagnitude(final float[] v,final float maxMag){
+        if(maxMag == 0) return new float[v.length];
+        float mag2 = getMag2(v);
+
+        if(mag2!=0){
             return mult(maxMag / ((float) Math.sqrt(mag2)), v);
         }
 

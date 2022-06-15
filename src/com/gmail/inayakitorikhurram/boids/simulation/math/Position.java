@@ -8,7 +8,7 @@ public class Position {
 
     private float[] p;
     private final float[] bounds;
-    private int dims;
+    public final int dims;
 
     public Position(float[] p, float[] bounds){
         if(p.length != bounds.length) {

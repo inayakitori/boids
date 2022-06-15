@@ -35,12 +35,12 @@ public class Boid {
         float[] acc = new float[bs.bounds().length];
         ArrayList<Boid> close_frens = new ArrayList<>();
 
-
+        //TODO quadtree
         for(int i = 0; i < frens.size(); i++){
             Boid fren = frens.get(i);
             float[] displacement = Position.getDisplacement(pos, fren.pos);
             float distanceSquared = MyMath.getMag2(displacement);
-            if(distanceSquared < viewDistanceSquared){
+            if(distanceSquared < viewDistanceSquared && distanceSquared != 0){
                 close_frens.add(fren);
             }
         }
@@ -48,39 +48,53 @@ public class Boid {
         float[][] displacements = getDisplacements(close_frens);
         float[] distancesSquared = new float[close_frens.size()];
 
-        //coherence
-        float[] coherence = MyMath.average(displacements);
-        coherence = MyMath.mult(weights[1], coherence);
-        acc = coherence;
+        if(!close_frens.isEmpty()) {
 
-        //separation TODO fix
-        float shortestDistanceSquared = Float.POSITIVE_INFINITY;
-        int closestBoidIndex = -1;
-        for(int i = 0; i < close_frens.size(); i++){
-            if(distancesSquared[i] < shortestDistanceSquared && distancesSquared[i] != 0){
-                shortestDistanceSquared = distancesSquared[i];
-                closestBoidIndex = i;
+            //coherence
+            float[] coherence = MyMath.average(displacements);
+            coherence = MyMath.mult(weights[1], coherence);
+            acc = coherence;
+
+            //separation TODO fix
+            float shortestDistanceSquared = Float.POSITIVE_INFINITY;
+            int closestBoidIndex = -1;
+            for (int i = 0; i < close_frens.size(); i++) {
+                if (distancesSquared[i] < shortestDistanceSquared) {
+                    shortestDistanceSquared = distancesSquared[i];
+                    closestBoidIndex = i;
+                }
             }
+
+            if (closestBoidIndex != -1) {
+                float[] smallestDisplacement = frens.get(closestBoidIndex).pos.get();
+
+                float[] separation = MyMath.mult(-1.0f * weights[2], smallestDisplacement);
+                acc = MyMath.sum(acc, separation);
+            }
+
+            //alignment
+
+            float[] alignment = new float[pos.dims];
+            for (Boid fren : close_frens) {
+                alignment = MyMath.sum(alignment, fren.vel);
+            }
+
+            alignment = MyMath.mult(weights[3] / close_frens.size(), alignment);
+
+            acc = MyMath.sum(acc, alignment);
+
+            //acc = MyMath.clamp(acc, 1);
+
+            //alignment
+
+
+            acc = MyMath.mult(weights[0], acc);
+
+            vel = MyMath.sum(vel, acc);
         }
 
-        //alignment
-
-
-
-        if(closestBoidIndex != -1) {
-            float[] smallestDisplacement = frens.get(closestBoidIndex).pos.get();
-
-            float[] separation = MyMath.mult(-1.0f * weights[2] / shortestDistanceSquared, smallestDisplacement);
-            //acc = MyMath.sum(acc, separation);
-        }
-        //alignment
-
-
-        acc = MyMath.mult(weights[0], acc);
-
-        vel = MyMath.sum(vel, acc );
-
-        //vel = MyMath.mult(0.999f, vel);
+        vel = MyMath.mult(0.999f, vel);
+        vel = MyMath.setMagnitude(vel, 0.1f);
         //update position
         pos.add(vel);
         return this;
