@@ -1,9 +1,10 @@
 package com.gmail.inayakitorikhurram.boids;
 
 
-import com.gmail.inayakitorikhurram.boids.simulation.Boid;
+import com.gmail.inayakitorikhurram.boids.simulation.boids.Boid;
 import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
-import com.gmail.inayakitorikhurram.boids.simulation.math.Position;
+import com.gmail.inayakitorikhurram.boids.simulation.boids.MouseBoid;
+import com.gmail.inayakitorikhurram.boids.simulation.math.Vector;
 import com.gmail.inayakitorikhurram.boids.window.SimulationDisplay;
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
@@ -19,21 +20,24 @@ public class Main {
 
 
         BoidSettings bs = new BoidSettings(
-                new float[]{1200, 800},
-                0.3f,
+                new Vector(new float[]{1600, 1000}),
+                0.6f,
                 1.0f,
-                1 ,
-                10,
-                new float[]{0.01f,
-                            1f,
-                            1f,
-                            0f
+                8,
+                200,
+                new float[]{0.001f,
+                            1.5f,
+                            0.025f,
+                            10f,
+                            10f,
                 }
         );
 
+        Vector renderSpace = Vector.requiredRenderSpace(bs.bounds());
+
         WindowSettings ws = new WindowSettings(
-                (int)bs.bounds()[0],
-                (int)bs.bounds()[1],
+                (int)renderSpace.get(0),
+                (int)renderSpace.get(1),
                 new Color(0xD5BFEA),
                 16
         );
@@ -42,7 +46,11 @@ public class Main {
 
         boids = new ArrayList<>();
 
-        for(int i = 0; i < 100; i++){
+        MouseBoid mouseBoid = new MouseBoid(bs);
+        boids.add(mouseBoid);
+        display.addBoid(mouseBoid);
+
+        for(int i = 1; i < bs.boidCount(); i++){
             Boid boid = new Boid(bs);
             boids.add(boid);
             display.addBoid(boid);

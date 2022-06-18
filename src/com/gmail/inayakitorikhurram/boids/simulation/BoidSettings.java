@@ -1,8 +1,10 @@
 package com.gmail.inayakitorikhurram.boids.simulation;
 
+import com.gmail.inayakitorikhurram.boids.simulation.math.Vector;
+
 //global settings for the boids
 public record BoidSettings(
-    float[] bounds,
+    Vector bounds,
     float minMass,
     float maxMass,
     int msPerTick,

@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="everything is broken&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/Boid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/MouseBoid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/SphereVector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/ToroidalPosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -111,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655274272600</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="everything is broken&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <created>1655302823450</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655302823450</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,26 +152,23 @@
     <MESSAGE value="they move towards each other! also more math stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="separation&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <MESSAGE value="everything is broken&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="everything is broken&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/Boid.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="29" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="((Position)((Boid)this).pos).p" custom="com.gmail.inayakitorikhurram.boids.simulation.math.Position,com.gmail.inayakitorikhurram.boids.simulation.Boid" />
+        <watch expression="pos.v" language="JAVA" />
+        <watch expression="vel.v" language="JAVA" />
+        <watch expression="acc.v" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

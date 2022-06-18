@@ -1,11 +1,10 @@
 package com.gmail.inayakitorikhurram.boids.window;
 
-import com.gmail.inayakitorikhurram.boids.simulation.Boid;
-import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
+import com.gmail.inayakitorikhurram.boids.simulation.boids.Boid;
+import com.gmail.inayakitorikhurram.boids.simulation.boids.MouseBoid;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -18,7 +17,7 @@ public class SimulationDisplay extends Canvas {
     private WindowSettings ws;
     private BufferStrategy bs;
     Graphics g = null;
-    private ArrayList<Boid> boids;
+    private final ArrayList<Boid> boids;
     public SimulationDisplay(WindowSettings ws){
         super();
         this.ws = ws;
@@ -61,7 +60,7 @@ public class SimulationDisplay extends Canvas {
             // clear back buffer...
             g = bs.getDrawGraphics();
             g.setColor( Color.BLACK );
-            g.fillRect( 0, 0, 639, 479 );
+            g.fillRect( 0, 0, getWidth(), getHeight() );
 
 
         Graphics2D g2d = (Graphics2D) g;
@@ -69,7 +68,14 @@ public class SimulationDisplay extends Canvas {
         g2d.setBackground(ws.backgroundColor());
         g2d.clearRect(0, 0, ws.width(), ws.height());
 
-        for(Boid boid : boids){
+        int mouseX=MouseInfo.getPointerInfo().getLocation().x-getLocationOnScreen().x;
+        int mouseY=MouseInfo.getPointerInfo().getLocation().y-getLocationOnScreen().y;
+
+        for(int i = 0; i < boids.size(); i++){
+            Boid boid = boids.get(i);
+            if(boid instanceof MouseBoid){
+                ((MouseBoid)boid).setMousePosition(mouseX, mouseY);
+            }
             boid.draw(g2d, ws);
         }
 
