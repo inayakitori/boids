@@ -1,15 +1,17 @@
 package com.gmail.inayakitorikhurram.boids.simulation.math;
 
-public class SphereVector extends ToroidalPosition{
+import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
+
+public class SpherePosition extends ToroidalPosition{
 
     protected int layer = 0;
 
-    public SphereVector(Vector v, Vector bounds, int layer, Vector vel) {
+    public SpherePosition(Vector v, Vector bounds, int layer, Vector vel) {
         super(v, bounds, vel);
         this.layer = layer;
     }
 
-    public SphereVector(SphereVector s){
+    public SpherePosition(SpherePosition s){
         this((Vector)s, s.bounds, s.layer, s.vel);
     }
 
@@ -35,7 +37,7 @@ public class SphereVector extends ToroidalPosition{
     }
 
     @Override
-    public int[] positionToRenderPosition() {
+    public int[] positionToRenderPosition(WindowSettings ws) {
         if(layer == 0){
             return new int[]{(int) v[0], (int) v[1]};
         } else{
@@ -44,11 +46,12 @@ public class SphereVector extends ToroidalPosition{
     }
 
     @Override
-    public Vector renderPositiontoPosition(Vector v) {
-        return super.renderPositiontoPosition(v);
+    public Vector renderPositiontoPosition(WindowSettings ws, Vector v) {
+
+        return super.renderPositiontoPosition(ws, v);
     }
 
-    public static int[] requiredRenderSpace(Vector bounds){
+    public static int[] requiredRenderSpace(WindowSettings ws, Vector bounds){
 
         Vector renderSpace = new Vector(bounds).mult(0, 2).add(0, 50);
 

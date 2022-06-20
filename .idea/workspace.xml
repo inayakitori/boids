@@ -4,16 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="everything is fixed! +got toroidal-vector class complete&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
-      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/TraceBoid.java" afterDir="false" />
+    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="3D stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <change afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/Boid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/MouseBoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/MouseBoid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/SphereVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/SphereVector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/TraceBoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/TraceBoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/SphereVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/SpherePosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/ToroidalPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/ToroidalPosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/WindowSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/WindowSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655525699338</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="3D stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <created>1655714246090</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655714246090</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,7 +168,8 @@
     <MESSAGE value="quick view distance&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="everything is broken&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="everything is fixed! +got toroidal-vector class complete&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything is fixed! +got toroidal-vector class complete&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <MESSAGE value="3D stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="3D stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

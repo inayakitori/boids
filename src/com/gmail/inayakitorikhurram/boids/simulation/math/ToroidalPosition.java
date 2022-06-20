@@ -1,11 +1,14 @@
 package com.gmail.inayakitorikhurram.boids.simulation.math;
 
-public class ToroidalPosition extends Vector{
+import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
+
+import java.awt.*;
+
+public class ToroidalPosition extends Position{
 
     protected final Vector bounds;
-    public Vector vel;
     public ToroidalPosition(Vector v, Vector bounds, Vector vel){
-        super(v);
+        super(v, vel);
         if(v.dims != bounds.dims) {
             throw new IllegalArgumentException("number of position elements must match number of boundary elements");
         }
@@ -41,7 +44,7 @@ public class ToroidalPosition extends Vector{
 
         return p1.getDisplacement(p2);
     }
-    
+
     public Vector getDisplacement(ToroidalPosition other){
         if(dims != other.dims){
         throw new IllegalArgumentException("Vector length mismatch");
@@ -67,7 +70,20 @@ public class ToroidalPosition extends Vector{
         return disp;
     }
 
+    //TODO fix :c
+    @Override
+    public ToroidalPosition getSlice(int i, int j) {
+        ToroidalPosition slice = new ToroidalPosition(j + 1 - i);
+        for(int k = 0; k < slice.dims; k++){
+            slice.v[i+k] = v[i+k];
+        }
+        return slice;
+    }
 
+    @Override
+    public ToroidalPosition getExpanded(int newDims, int startingIndex) {
+        return super.getExpanded(newDims, startingIndex);
+    }
 /*
     public static Vector getAverageDisplacement(Position p, ArrayList<Position> others){
         int n = others.size();

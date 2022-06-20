@@ -10,6 +10,14 @@ public class Vector {
         v = new float[dims];
     }
 
+    public Vector(float value, int dims){
+        this.dims = dims;
+        v = new float[dims];
+        for(int i = 0; i < dims; i++){
+            v[i] = value;
+        }
+    }
+
     public Vector(float[] v){
         this.dims = v.length;
         this.v = new float[dims];
@@ -117,6 +125,22 @@ public class Vector {
         return v[i];
     }
 
+    public Vector getSlice(int i, int j){
+        Vector slice = new Vector(j + 1 - i);
+        for(int k = 0; k < slice.dims; k++){
+            slice.v[i+k] = v[i+k];
+        }
+        return slice;
+    }
+
+    public Vector getExpanded(int newDims, int startingIndex){
+        Vector expanded = new Vector(newDims);
+        for(int i = startingIndex; i < startingIndex + dims; i++){
+            expanded.v[i] = v[i];
+        }
+        return expanded;
+    }
+
     public Vector getDisplacement(final Vector other){
         if(dims != other.dims){
             throw new IllegalArgumentException("Vector length mismatch");
@@ -144,17 +168,6 @@ public class Vector {
         return this;
     }
 
-    public int[] positionToRenderPosition(){
-        return new int[]{(int) v[0], (int) v[1]};
-    }
-    public Vector renderPositiontoPosition(Vector v){
-        return new Vector(v);
-    }
-
-    public static int[] requiredRenderSpace(Vector bounds){
-
-        return new int[]{(int) bounds.v[0], (int) bounds.v[1]};
-    }
 
 
 

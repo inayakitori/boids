@@ -7,6 +7,7 @@ public record BoidSettings(
     Vector bounds,
     float minMass,
     float maxMass,
+    float maxSpeed,
     int msPerTick,
     int boidCount,
     float[] defaultWeights

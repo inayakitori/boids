@@ -18,14 +18,14 @@ public class SimulationDisplay extends Canvas {
     private BufferStrategy bs;
     Graphics g = null;
     private final ArrayList<Boid> boids;
-    public SimulationDisplay(WindowSettings ws){
+    public SimulationDisplay(WindowSettings ws, int width, int height){
         super();
         this.ws = ws;
-        setSize(ws.width(), ws.height());
+        setSize(width, height);
 
         setIgnoreRepaint(true);
         JFrame frame = new JFrame("BOIDS BOIDS BOIDS");
-        frame.setSize(ws.width(), ws.height());
+        frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setIgnoreRepaint(true);
@@ -66,7 +66,7 @@ public class SimulationDisplay extends Canvas {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setBackground(ws.backgroundColor());
-        g2d.clearRect(0, 0, ws.width(), ws.height());
+        g2d.clearRect(0, 0, getWidth(), getHeight());
 
         int mouseX=MouseInfo.getPointerInfo().getLocation().x-getLocationOnScreen().x;
         int mouseY=MouseInfo.getPointerInfo().getLocation().y-getLocationOnScreen().y;
@@ -74,7 +74,7 @@ public class SimulationDisplay extends Canvas {
         for(int i = 0; i < boids.size(); i++){
             Boid boid = boids.get(i);
             if(boid instanceof MouseBoid){
-                ((MouseBoid)boid).setMousePosition(mouseX, mouseY);
+                ((MouseBoid)boid).setMousePosition(ws, mouseX, mouseY);
             }
             boid.draw(g2d, ws);
         }
