@@ -49,6 +49,11 @@ public class Vector {
         if(mag == 0) return this;
         return mult(s / mag);
     }
+    public void clamp(float s) {
+        if(getMag2() > s * s){
+            setMagnitude(s);
+        }
+    }
 
     public Vector normalise(){
         return setMagnitude(1.0f);
@@ -127,6 +132,11 @@ public class Vector {
 
     }
 
+    public Vector mult(int i, float s){
+        v[i]*=s;
+        return this;
+    }
+
     public Vector mult(float s){
         for(int i = 0; i < dims; i++){
             v[i] *= s;
@@ -134,16 +144,19 @@ public class Vector {
         return this;
     }
 
-    public Vector positionToRenderPosition(){
-        return new Vector(this);
+    public int[] positionToRenderPosition(){
+        return new int[]{(int) v[0], (int) v[1]};
     }
     public Vector renderPositiontoPosition(Vector v){
-        return new Vector(v).mult(2.0f);
+        return new Vector(v);
     }
 
-    public static Vector requiredRenderSpace(Vector bounds){
-        return new Vector(bounds);
+    public static int[] requiredRenderSpace(Vector bounds){
+
+        return new int[]{(int) bounds.v[0], (int) bounds.v[1]};
     }
+
+
 
 /*
     public static Vector getAverageDisplacement(final Vector v, ArrayList<Vector> others){

@@ -3,18 +3,19 @@ package com.gmail.inayakitorikhurram.boids.simulation.math;
 public class ToroidalPosition extends Vector{
 
     protected final Vector bounds;
-
-    public ToroidalPosition(Vector v, Vector bounds){
+    public Vector vel;
+    public ToroidalPosition(Vector v, Vector bounds, Vector vel){
         super(v);
         if(v.dims != bounds.dims) {
             throw new IllegalArgumentException("number of position elements must match number of boundary elements");
         }
 
         this.bounds = new Vector(bounds);
+        this.vel = new Vector(vel);
     }
 
     public ToroidalPosition(ToroidalPosition v){
-        this(v, v.bounds);
+        this(v, v.bounds, v.vel);
     }
     public ToroidalPosition add(final Vector dv){
         for(int i = 0; i < dims; i++){
@@ -65,6 +66,7 @@ public class ToroidalPosition extends Vector{
 
         return disp;
     }
+
 
 /*
     public static Vector getAverageDisplacement(Position p, ArrayList<Position> others){

@@ -11,21 +11,25 @@ import java.util.ArrayList;
 public class Boid {
 
     protected BoidSettings bs;
-    protected Vector pos;
-    protected Vector vel;
+    protected ToroidalPosition pos;
     protected float viewDistance = 100;
     protected float viewDistanceSquared = viewDistance * viewDistance;
-    protected boolean avoidWalls = true;
+    protected boolean avoidWalls = false;
     protected float mass;
     protected float invMass;
     protected float[] weights; //0 = coherence, 1 = separation, 2 = alignment
-    protected Color color;
+    protected float[] colorHSB;
 
     public Boid(BoidSettings bs){
         this.bs = bs;
-        color = new Color((int)(Math.random() * 0xFFFFFF));
-        pos = new Vector(MyMath.randomVector(bs.bounds()));
-        vel = MyMath.randomVector(new Vector(new float[]{-1.0f, -1.0f}), new Vector(new float[]{1.0f, 1.0f}));
+        colorHSB = MyMath.randomArray(
+                new float[]{0.0f, 0.25f, 0.25f},
+                new float[]{1.0f, 1.0f, 1.0f}
+        );
+        pos = new ToroidalPosition(MyMath.randomVector(bs.bounds()),
+                bs.bounds(),
+                new Vector(bs.bounds().dims)
+        );
         mass = MyMath.random(bs.minMass(), bs.maxMass());
         invMass = 1.0f / mass;
         weights = bs.defaultWeights();
@@ -79,7 +83,7 @@ public class Boid {
                     }
 
                     //alignment p1
-                    alignment.add(friend.vel);
+                    alignment.add(friend.pos.vel);
                 }
 
                 float inverseFriendCount = 1.0f / close_friends.size();
@@ -127,9 +131,13 @@ public class Boid {
                 .add(avoidance .mult(weights[3]))
                 .add(walls     .mult(weights[4]));
 
-        vel.add(acc.mult(invMass));
-        vel.setMagnitude(3.0f * invMass);
-        pos.add(vel);
+        pos.vel.add(acc.mult(invMass));
+        pos.vel.clamp(3.0f * invMass);
+        pos.add(pos.vel);
+
+        if(pos.dims > 2){
+            colorHSB[0] = pos.get(2)/bs.bounds().get(2);
+        }
 
         return this;
     }
@@ -148,13 +156,17 @@ public class Boid {
 //        float h = pos.get(2) / bs.bounds().get(2);
         float r = 7.5f * (float)Math.sqrt(mass);
 
-//        color = Color.getHSBColor(1, 0.7f, 0.7f);
-        Vector drawPos = pos.positionToRenderPosition();
-        g2d.setColor(color);
-        g2d.fillOval((int) (drawPos.get(0) - r), (int) (drawPos.get(1) - r), (int) (2.0f * r), (int) (2.0f * r));
+        Color color = Color.getHSBColor(colorHSB[0], colorHSB[1], colorHSB[2]);
+        drawCircle(g2d,pos, color, r);
 
     }
+    protected static void drawCircle(Graphics2D g2d, Vector pos, Color c, float r){
+        drawCircle(g2d, pos.positionToRenderPosition(), c, r);
+    }
 
-
+    protected static void drawCircle(Graphics2D g2d, int[] drawPos, Color c, float r){
+        g2d.setColor(c);
+        g2d.fillOval((int) (drawPos[0] - r), (int) (drawPos[1] - r), (int) (2.0f * r), (int) (2.0f * r));
+    }
 
 }

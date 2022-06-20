@@ -18,6 +18,24 @@ public final class MyMath {
     public static Vector randomVector(final Vector max){
         return randomVector(new Vector(max.dims), max);
     }
+    public static float[] randomArray(float min, float max, int dims){
+        float[] v = new float[dims];
+        for(int i = 0; i < dims; i++){
+            v[i] = random(min, max);
+        }
+        return v;
+    }
+
+    public static float[] randomArray(float[] min, float[] max){
+        if(min.length != max.length){
+            throw new IllegalArgumentException("minimum bounds must match maximum bounds");
+        }
+        float[] v = new float[min.length];
+        for(int i = 0; i < min.length; i++){
+            v[i] = random(min[i], max[i]);
+        }
+        return v;
+    }
 
     public static Vector randomVector(final Vector min, final Vector max) {
         if(min.dims != max.dims){

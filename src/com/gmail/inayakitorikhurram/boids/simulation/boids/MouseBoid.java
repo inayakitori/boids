@@ -8,8 +8,9 @@ import java.util.ArrayList;
 public class MouseBoid extends Boid{
     public MouseBoid(BoidSettings bs) {
         super(bs);
-        mouse = new Vector(new float[]{0f, 0f});
-        pos = new Vector(mouse);
+        mouse = new Vector(bs.bounds().dims);
+        pos = new ToroidalPosition(mouse, bs.bounds(), new Vector(bs.bounds().dims));
+        colorHSB[0] = 0;
     }
 
     Vector mouse;
