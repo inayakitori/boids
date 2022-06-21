@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class Boid {
 
     protected BoidSettings bs;
-    protected ToroidalPosition pos;
+    protected Position pos;
     protected float viewDistance = 100;
     protected float viewDistanceSquared = viewDistance * viewDistance;
-    protected boolean avoidWalls = false;//TODO add to settings
+    protected boolean avoidWalls = true;//TODO add to settings
     protected float mass;
     protected float invMass;
     protected float[] weights; //0 = coherence, 1 = separation, 2 = alignment
@@ -25,8 +25,8 @@ public class Boid {
                 new float[]{0.0f, 0.25f, 0.25f},
                 new float[]{1.0f, 1.0f, 1.0f}
         );
-        pos = new ToroidalPosition(MyMath.randomVector(bs.bounds())
-                ,bs.bounds()
+        pos = new Position(MyMath.randomVector(bs.bounds())
+                //,bs.bounds()
                 ,new Vector(MyMath.randomArray(-1.0f, 1.0f, bs.bounds().dims))
         );
         mass = MyMath.random(bs.minMass(), bs.maxMass());
@@ -103,7 +103,9 @@ public class Boid {
         for(MouseBoid mouseBoid : mouse_friends){
             Vector displacement = pos.getSlice(0, 1).getDisplacement(mouseBoid.pos.getSlice(0, 1));
             float distance2 = displacement.getMag2();
-            avoidance.add(displacement.mult(-1.0f / distance2).getExpanded(bs.bounds().dims, 0));
+            if(distance2 < mouseBoid.getRange2()) {
+                avoidance.add(displacement.mult(-1.0f / (distance2)).getExpanded(bs.bounds().dims, 0));
+            }
         }
 
         if(avoidWalls) {

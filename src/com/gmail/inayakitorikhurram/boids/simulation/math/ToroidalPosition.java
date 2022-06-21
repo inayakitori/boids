@@ -6,7 +6,14 @@ import java.awt.*;
 
 public class ToroidalPosition extends Position{
 
-    protected final Vector bounds;
+    protected Vector bounds;
+
+    public ToroidalPosition(int dims){
+        super(dims);
+        bounds = new Vector(dims);
+        vel = new Vector(dims);
+    }
+
     public ToroidalPosition(Vector v, Vector bounds, Vector vel){
         super(v, vel);
         if(v.dims != bounds.dims) {
@@ -72,17 +79,22 @@ public class ToroidalPosition extends Position{
 
     //TODO fix :c
     @Override
-    public ToroidalPosition getSlice(int i, int j) {
+    public ToroidalPosition getSlice(int i, int j){
         ToroidalPosition slice = new ToroidalPosition(j + 1 - i);
         for(int k = 0; k < slice.dims; k++){
             slice.v[i+k] = v[i+k];
+            slice.bounds.v[i+k] = bounds.v[i+k];
+            slice.vel.v[i+k] = vel.v[i+k];
         }
         return slice;
     }
 
     @Override
     public ToroidalPosition getExpanded(int newDims, int startingIndex) {
-        return super.getExpanded(newDims, startingIndex);
+        return new ToroidalPosition(
+                super.getExpanded(newDims, startingIndex),
+                bounds.getExpanded(newDims, startingIndex),
+                vel.getExpanded(newDims, startingIndex));
     }
 /*
     public static Vector getAverageDisplacement(Position p, ArrayList<Position> others){

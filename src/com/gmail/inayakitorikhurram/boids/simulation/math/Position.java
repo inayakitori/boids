@@ -8,6 +8,11 @@ import java.awt.*;
 public class Position extends Vector{
     public Vector vel;
 
+
+    public Position(int dims){
+        super(dims);
+    }
+
     public Position(Vector v, Vector vel) {
         super(v);
         this.vel = new Vector(vel);

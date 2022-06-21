@@ -1,14 +1,10 @@
 package com.gmail.inayakitorikhurram.boids;
 
 
-import com.gmail.inayakitorikhurram.boids.simulation.boids.Boid;
-import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
-import com.gmail.inayakitorikhurram.boids.simulation.boids.MouseBoid;
-import com.gmail.inayakitorikhurram.boids.simulation.boids.TraceBoid;
-import com.gmail.inayakitorikhurram.boids.simulation.math.ToroidalPosition;
-import com.gmail.inayakitorikhurram.boids.simulation.math.Vector;
-import com.gmail.inayakitorikhurram.boids.window.SimulationDisplay;
-import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
+import com.gmail.inayakitorikhurram.boids.window.*;
+import com.gmail.inayakitorikhurram.boids.simulation.*;
+import com.gmail.inayakitorikhurram.boids.simulation.boids.*;
+import com.gmail.inayakitorikhurram.boids.simulation.math.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -22,16 +18,16 @@ public class Main {
 
 
         BoidSettings bs = new BoidSettings(
-                new Vector(900, 3),
+                new Vector(900, 4),
                 0.6f,
                 1.0f,
                 3.0f,
                 8,
-                5,
+                100,
                 new float[]{0.001f,     //cohesion
                         0.5f,       //alignment
                         0.01f,     //separation
-                        30f,        //avoidance
+                        3f,        //avoidance
                         10f,        //walls
                 }
         );
@@ -45,7 +41,7 @@ public class Main {
         );
 
 
-        int[] renderSpace = ToroidalPosition.requiredRenderSpace(ws, bs.bounds());
+        int[] renderSpace = Position.requiredRenderSpace(ws, bs.bounds());
 
         display = new SimulationDisplay(ws, renderSpace[0], renderSpace[1]);
 
@@ -55,12 +51,12 @@ public class Main {
 //        boids.add(traceBoid);
 //        display.addBoid(traceBoid);
 
-        MouseBoid mouseBoid = new MouseBoid(bs);
-        boids.add(mouseBoid);
-        display.addBoid(mouseBoid);
+//        MouseBoid mouseBoid = new MouseBoid(bs);
+//        boids.add(mouseBoid);
+//        display.addBoid(mouseBoid);
 
         for(int i = 1; i < bs.boidCount(); i++){
-            Boid boid = new TraceBoid(bs, 10, 1);
+            Boid boid = new TraceBoid(bs, 15, 1);
             boids.add(boid);
             display.addBoid(boid);
         }
