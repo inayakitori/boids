@@ -1,6 +1,6 @@
 package com.gmail.inayakitorikhurram.boids.simulation.math;
 
-import java.util.ArrayList;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.Vector;
 
 public final class MyMath {
 
@@ -13,6 +13,7 @@ public final class MyMath {
         return new Vector(a).mult(1.0f-t)
                 .add(new Vector(b).mult(t));
     }
+
 
     //random
     public static Vector randomVector(final Vector max){
@@ -43,7 +44,7 @@ public final class MyMath {
         }
         Vector v = new Vector(min.dims);
         for(int i = 0; i < min.dims; i++){
-            v.v[i] = MyMath.random(min.v[i], max.v[i]);
+            v.set(i,MyMath.random(min.get(i), max.get(i)));
         }
 
         return v;

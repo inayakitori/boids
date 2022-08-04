@@ -1,4 +1,6 @@
-package com.gmail.inayakitorikhurram.boids.simulation.math;
+package com.gmail.inayakitorikhurram.boids.simulation.math.position;
+
+import java.util.Arrays;
 
 public class Vector {
 

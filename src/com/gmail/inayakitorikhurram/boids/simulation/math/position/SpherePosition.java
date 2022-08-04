@@ -1,4 +1,4 @@
-package com.gmail.inayakitorikhurram.boids.simulation.math;
+package com.gmail.inayakitorikhurram.boids.simulation.math.position;
 
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
@@ -6,13 +6,13 @@ public class SpherePosition extends ToroidalPosition{
 
     protected int layer = 0;
 
-    public SpherePosition(Vector v, Vector bounds, int layer, Vector vel) {
-        super(v, bounds, vel);
+    public SpherePosition( Vector v, Vector bounds, boolean[] isToroidal, int layer, Vector vel) {
+        super(v, bounds, isToroidal, vel);
         this.layer = layer;
     }
 
     public SpherePosition(SpherePosition s){
-        this((Vector)s, s.bounds, s.layer, s.vel);
+        this((Vector)s, s.bounds, s.isToroidal, s.layer, s.vel);
     }
 
     @Override
@@ -34,6 +34,11 @@ public class SpherePosition extends ToroidalPosition{
     @Override
     public Vector getDisplacement(ToroidalPosition other) {
         return super.getDisplacement(other);
+    }
+
+    @Override
+    public SpherePosition clone() {
+        return new SpherePosition(this);
     }
 
     @Override

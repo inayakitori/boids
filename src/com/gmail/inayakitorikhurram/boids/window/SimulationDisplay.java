@@ -25,6 +25,7 @@ public class SimulationDisplay extends Canvas {
 
         setIgnoreRepaint(true);
         JFrame frame = new JFrame("BOIDS BOIDS BOIDS");
+        frame.setUndecorated(true);
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);

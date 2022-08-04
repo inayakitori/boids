@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="More helper functions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+    <list default="true" id="e5b5609b-ed28-433b-8c6e-baaf97906f93" name="Changes" comment="added slicing so mouse affects all dimensions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/BoidSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/Boid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/Boid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/MouseBoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/MouseBoid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/ToroidalPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/ToroidalPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/TraceBoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/boids/TraceBoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/MyMath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/position/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/SpherePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/position/SpherePosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/ToroidalPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/position/ToroidalPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/simulation/math/position/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/SimulationDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/WindowSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gmail/inayakitorikhurram/boids/window/WindowSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655724996103</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added slicing so mouse affects all dimensions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;">
+      <created>1655787804144</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655787804144</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +185,8 @@
     <MESSAGE value="everything is fixed! +got toroidal-vector class complete&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="3D stuff&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
     <MESSAGE value="More helper functions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="More helper functions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <MESSAGE value="added slicing so mouse affects all dimensions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added slicing so mouse affects all dimensions&#10;-Inaya Khurram &lt;inayakitorikhurram@gmail.com&gt;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -189,5 +204,8 @@
         <watch expression="acc.v" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/boids$Main.ic" NAME="Main Coverage Results" MODIFIED="1655816495371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

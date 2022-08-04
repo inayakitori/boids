@@ -1,7 +1,7 @@
 package com.gmail.inayakitorikhurram.boids.simulation.boids;
 
 import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
-import com.gmail.inayakitorikhurram.boids.simulation.math.*;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.*;
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
 import java.util.ArrayList;
@@ -12,7 +12,11 @@ public class MouseBoid extends Boid{
     public MouseBoid(BoidSettings bs) {
         super(bs);
         mouse = new Vector(bs.bounds().dims);
-        pos = new ToroidalPosition(mouse, bs.bounds(), new Vector(bs.bounds().dims));
+        pos = new ToroidalPosition(mouse
+                ,bs.bounds()
+                ,bs.isToroidal()
+                //, 0
+                ,new Vector(bs.bounds().dims));
 
         colorHSB[0] = 0.5f;
         colorHSB[1] = 0.5f;

@@ -1,11 +1,9 @@
-package com.gmail.inayakitorikhurram.boids.simulation.math;
+package com.gmail.inayakitorikhurram.boids.simulation.math.position;
 
 import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
-import java.awt.*;
-
-public class Position extends Vector{
+public class Position extends Vector {
     public Vector vel;
 
 
@@ -53,6 +51,11 @@ public class Position extends Vector{
     public static int[] requiredRenderSpace(WindowSettings ws, Vector bounds){
 
         return new int[]{(int) (bounds.v[0]/ ws.drawScale()), (int) (bounds.v[1] / ws.drawScale())};
+    }
+
+    @Override
+    public Position clone(){
+        return new Position(this);
     }
 
 }

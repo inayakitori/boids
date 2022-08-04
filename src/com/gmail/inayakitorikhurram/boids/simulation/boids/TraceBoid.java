@@ -1,7 +1,7 @@
 package com.gmail.inayakitorikhurram.boids.simulation.boids;
 
 import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
-import com.gmail.inayakitorikhurram.boids.simulation.math.Position;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.Position;
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
 import java.awt.*;
@@ -20,7 +20,7 @@ public class TraceBoid extends Boid{
         this.traceGap = traceGap;
         trace = new Position[traceLength];
         for(int i = 0; i < traceLength; i++){
-            trace[i] = new Position(pos);
+            trace[i] = pos.clone();
         }
     }
 
@@ -35,7 +35,7 @@ public class TraceBoid extends Boid{
             trace[i] = trace[i+1];
         }
         super.update(friends);
-        trace[traceLength-1] = new Position(pos);
+        trace[traceLength-1] = pos.clone();
         return this;
     }
 

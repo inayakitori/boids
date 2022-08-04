@@ -2,6 +2,10 @@ package com.gmail.inayakitorikhurram.boids.simulation.boids;
 
 import com.gmail.inayakitorikhurram.boids.simulation.BoidSettings;
 import com.gmail.inayakitorikhurram.boids.simulation.math.*;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.Position;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.SpherePosition;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.ToroidalPosition;
+import com.gmail.inayakitorikhurram.boids.simulation.math.position.Vector;
 import com.gmail.inayakitorikhurram.boids.window.WindowSettings;
 
 import java.awt.*;
@@ -10,7 +14,7 @@ import java.util.ArrayList;
 public class Boid {
 
     protected BoidSettings bs;
-    protected Position pos;
+    protected ToroidalPosition pos;
     protected float viewDistance = 100;
     protected float viewDistanceSquared = viewDistance * viewDistance;
     protected boolean avoidWalls = true;//TODO add to settings
@@ -25,10 +29,16 @@ public class Boid {
                 new float[]{0.0f, 0.25f, 0.25f},
                 new float[]{1.0f, 1.0f, 1.0f}
         );
-        pos = new Position(MyMath.randomVector(bs.bounds())
-                //,bs.bounds()
+
+        pos = new ToroidalPosition(
+                MyMath.randomVector(bs.bounds())
+                ,bs.bounds()
+                ,bs.isToroidal()
+                //,0
                 ,new Vector(MyMath.randomArray(-1.0f, 1.0f, bs.bounds().dims))
         );
+        colorHSB[0] = pos.get(0)/bs.bounds().get(0);
+        colorHSB[1] = pos.get(1)/bs.bounds().get(1);
         mass = MyMath.random(bs.minMass(), bs.maxMass());
         invMass = 1.0f / mass;
         weights = bs.defaultWeights();
@@ -113,14 +123,16 @@ public class Boid {
             float margin = 0.1f;
             //wall avoidance
             for (int d = 0; d < dims; d++) {
-                float x = pos.get(d);
-                float b = bs.bounds().get(d);
-                if (x < margin * b) {
-                    float f = margin - x / b;
-                    walls.add(d, f);
-                } else if (x > (1f - margin) * b) {
-                    float f = -margin - (x - b) / b;
-                    walls.add(d, f);
+                if(!bs.isToroidal()[d]) {
+                    float x = pos.get(d);
+                    float b = bs.bounds().get(d);
+                    if (x < margin * b) {
+                        float f = margin - x / b;
+                        walls.add(d, f);
+                    } else if (x > (1f - margin) * b) {
+                        float f = -margin - (x - b) / b;
+                        walls.add(d, f);
+                    }
                 }
             }
 
